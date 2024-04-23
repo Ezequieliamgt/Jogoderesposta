@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>clicke 15 vezes no sim</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #simButton, #naoButton {
+        font-size: 16px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #simButton {
+        background-color: #4CAF50; /* Verde */
+        color: white;
+    }
+    #simButton:hover {
+        background-color: #45a049; /* Verde mais escuro */
+    }
+    #naoButton {
+        background-color: #f44336; /* Vermelho */
+        color: white;
+    }
+    #naoButton:hover {
+        background-color: #d32f2f; /* Vermelho mais escuro */
+    }
+    #simButton {
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+<h1>Você me ama?</h1>
+<button id="simButton" onclick="mudarPosicaoAleatoria()">Sim</button>
+<button id="naoButton" onclick="alert('Oh, que pena! Vamos tentar de novo?')">Não</button>
+
+<script>
+var numClicks = 0;
+
+function mudarPosicaoAleatoria() {
+    numClicks++;
+    if (numClicks === 15) {
+        alert("Se voce insistiu em clicar parabens você realmente me ama e eu tambem te amo :)");
+        numClicks = 0; // Reinicia o contador após exibir a mensagem
+    }
+
+    var posicoes = ["0", "20%", "40%", "60%", "80%"];
+    var novaPosicaoX = posicoes[Math.floor(Math.random() * posicoes.length)];
+    var novaPosicaoY = posicoes[Math.floor(Math.random() * posicoes.length)];
+    var botaoSim = document.getElementById("simButton");
+    botaoSim.style.position = "absolute";
+    botaoSim.style.left = novaPosicaoX;
+    botaoSim.style.top = novaPosicaoY;
+}
+</script>
+</body>
+</html>
