@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>clicke 15 vezes no sim</title>
+<title> HELLO KITTY :)</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -18,11 +18,11 @@
         cursor: pointer;
     }
     #simButton {
-        background-color: #4CAF50; /* Verde */
+        background-color: rgb(20, 104, 20); /* Verde */
         color: white;
     }
     #simButton:hover {
-        background-color: #45a049; /* Verde mais escuro */
+        background-color: green; /* Verde mais escuro */
     }
     #naoButton {
         background-color: #f44336; /* Vermelho */
@@ -37,9 +37,9 @@
 </style>
 </head>
 <body>
-<h1>Você me ama?</h1>
+<h1>Você quer saber se a Hello Kitty te ama?</h1>
 <button id="simButton" onclick="mudarPosicaoAleatoria()">Sim</button>
-<button id="naoButton" onclick="alert('Oh, que pena! Vamos tentar de novo?')">Não</button>
+<button id="naoButton" onclick="alert('Que pena, parece que você nao se interessa :(')">Não</button>
 
 <script>
 var numClicks = 0;
@@ -47,7 +47,7 @@ var numClicks = 0;
 function mudarPosicaoAleatoria() {
     numClicks++;
     if (numClicks === 15) {
-        alert("Se voce insistiu em clicar parabens você realmente me ama e eu tambem te amo :)");
+        alert("Se voce insistiu em clicar parabens ela ama você e te acha muito especial e uma pessoa muito incrivel:)");
         numClicks = 0; // Reinicia o contador após exibir a mensagem
     }
 
