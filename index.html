@@ -37,6 +37,9 @@
     #helloKittyImage {
         display: none;
         margin-top: 20px;
+        max-width: 200px; /* Tamanho máximo ajustado para celulares */
+        width: 100%; /* Responsivo */
+        height: auto; /* Mantém a proporção */
     }
 </style>
 </head>
@@ -54,7 +57,10 @@ function mudarPosicaoAleatoria() {
     if (numClicks === 15) {
         alert("Se você insistiu em clicar, parabéns! Ela ama você e te acha muito especial e uma pessoa muito incrível :)");
         document.getElementById("helloKittyImage").style.display = "block"; // Mostra a imagem
-        numClicks = 0; // Reinicia o contador após exibir a mensagem
+    } else if (numClicks > 15) {
+        // Reinicia o contador e oculta a imagem
+        document.getElementById("helloKittyImage").style.display = "none";
+        numClicks = 0;
     }
 
     var posicoes = ["0", "20%", "40%", "60%", "80%"];
