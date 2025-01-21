@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> HELLO KITTY :)</title>
+<title>HELLO KITTY :)</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -34,12 +34,17 @@
     #simButton {
         margin-right: 10px;
     }
+    #helloKittyImage {
+        display: none;
+        margin-top: 20px;
+    }
 </style>
 </head>
 <body>
 <h1>Você quer saber se a Hello Kitty te ama?</h1>
 <button id="simButton" onclick="mudarPosicaoAleatoria()">Sim</button>
-<button id="naoButton" onclick="alert('Que pena, parece que você nao se interessa :(')">Não</button>
+<button id="naoButton" onclick="alert('Que pena, parece que você não se interessa :(')">Não</button>
+<img id="helloKittyImage" src="https://i.pinimg.com/736x/07/f7/06/07f706134498b6e63d2ae49e05a8170a.jpg" alt="Hello Kitty ama você!">
 
 <script>
 var numClicks = 0;
@@ -47,7 +52,8 @@ var numClicks = 0;
 function mudarPosicaoAleatoria() {
     numClicks++;
     if (numClicks === 15) {
-        alert("Se voce insistiu em clicar parabens ela ama você e te acha muito especial e uma pessoa muito incrivel:)");
+        alert("Se você insistiu em clicar, parabéns! Ela ama você e te acha muito especial e uma pessoa muito incrível :)");
+        document.getElementById("helloKittyImage").style.display = "block"; // Mostra a imagem
         numClicks = 0; // Reinicia o contador após exibir a mensagem
     }
 
