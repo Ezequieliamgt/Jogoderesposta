@@ -8,11 +8,17 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
+        margin: 0; /* Remove margem padrão */
+        height: 100vh; /* Altura da tela inteira */
         background-image: url('https://external-preview.redd.it/rqwClddz7T-BD2DdtC73CIww60fjUAVwDhn2ZSPnuhM.jpg?width=640&crop=smart&auto=webp&s=4653750095a676223375db4818890cb19d28de83');
         background-size: cover; /* Faz o fundo cobrir toda a tela */
         background-position: center; /* Centraliza a imagem */
         background-repeat: no-repeat; /* Evita repetição da imagem */
-        color: white; /* Ajusta o texto para ser legível */
+        display: flex; /* Facilita centralizar conteúdo */
+        flex-direction: column; /* Alinha elementos na vertical */
+        justify-content: center; /* Centraliza verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+        color: white; /* Texto legível no fundo */
     }
     #simButton, #naoButton {
         font-size: 16px;
