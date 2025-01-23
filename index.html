@@ -8,79 +8,96 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        margin: 0; /* Remove margem padrão */
-        height: 100vh; /* Altura da tela inteira */
+        margin: 0;
+        height: 100vh;
         background-image: url('https://external-preview.redd.it/rqwClddz7T-BD2DdtC73CIww60fjUAVwDhn2ZSPnuhM.jpg?width=640&crop=smart&auto=webp&s=4653750095a676223375db4818890cb19d28de83');
-        background-size: cover; /* Faz o fundo cobrir toda a tela */
-        background-position: center; /* Centraliza a imagem */
-        background-repeat: no-repeat; /* Evita repetição da imagem */
-        display: flex; /* Facilita centralizar conteúdo */
-        flex-direction: column; /* Alinha elementos na vertical */
-        justify-content: center; /* Centraliza verticalmente */
-        align-items: center; /* Centraliza horizontalmente */
-        color: white; /* Texto legível no fundo */
+        background-size: 100% 100%; /* Ajusta ao tamanho da tela */
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        overflow: hidden;
+    }
+    h1 {
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
     #simButton, #naoButton {
         font-size: 16px;
-        margin-top: 20px;
+        margin: 10px;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
     }
     #simButton {
-        background-color: rgb(20, 104, 20); /* Verde */
+        background-color: rgb(8, 122, 8);
         color: white;
     }
     #simButton:hover {
-        background-color: green; /* Verde mais escuro */
+        background-color: green;
+        transform: scale(1.1);
     }
     #naoButton {
-        background-color: #f44336; /* Vermelho */
+        background-color: #f44336;
         color: white;
     }
     #naoButton:hover {
-        background-color: #d32f2f; /* Vermelho mais escuro */
-    }
-    #simButton {
-        margin-right: 10px;
+        background-color: #d32f2f;
+        transform: scale(1.1);
     }
     #helloKittyImage {
         display: none;
         margin-top: 20px;
-        max-width: 200px; /* Tamanho máximo ajustado para celulares */
-        width: 100%; /* Responsivo */
-        height: auto; /* Mantém a proporção */
+        max-width: 90%; /* Limita a largura para telas menores */
+        max-height: 90%; /* Limita a altura para telas menores */
+        width: auto; /* Mantém a proporção da largura */
+        height: auto; /* Mantém a proporção da altura */
     }
 </style>
 </head>
 <body>
 <h1>Você quer saber se a Hello Kitty te ama?</h1>
-<button id="simButton" onclick="mudarPosicaoAleatoria()">Sim</button>
-<button id="naoButton" onclick="alert('Que pena, parece que você não se interessa :(')">Não</button>
+<div id="buttonsContainer">
+    <button id="simButton" onclick="moverBotao()">Sim</button>
+    <button id="naoButton" onclick="mostrarMensagem()">Não</button>
+</div>
 <img id="helloKittyImage" src="https://i.pinimg.com/736x/07/f7/06/07f706134498b6e63d2ae49e05a8170a.jpg" alt="Hello Kitty ama você!">
 
 <script>
-var numClicks = 0;
+let numClicks = 0;
 
-function mudarPosicaoAleatoria() {
+function moverBotao() {
     numClicks++;
-    if (numClicks === 15) {
-        alert("Se você insistiu em clicar, parabéns! Ela ama você e te acha muito especial e uma pessoa muito incrível :)");
-        document.getElementById("helloKittyImage").style.display = "block"; // Mostra a imagem
-    } else if (numClicks > 15) {
-        // Reinicia o contador e oculta a imagem
-        document.getElementById("helloKittyImage").style.display = "none";
-        numClicks = 0;
-    }
+    const botaoSim = document.getElementById("simButton");
+    const larguraTela = window.innerWidth - botaoSim.offsetWidth;
+    const alturaTela = window.innerHeight - botaoSim.offsetHeight;
 
-    var posicoes = ["0", "20%", "40%", "60%", "80%"];
-    var novaPosicaoX = posicoes[Math.floor(Math.random() * posicoes.length)];
-    var novaPosicaoY = posicoes[Math.floor(Math.random() * posicoes.length)];
-    var botaoSim = document.getElementById("simButton");
+    // Gera posições aleatórias dentro dos limites da tela
+    const novaPosicaoX = Math.floor(Math.random() * larguraTela);
+    const novaPosicaoY = Math.floor(Math.random() * alturaTela);
+
     botaoSim.style.position = "absolute";
-    botaoSim.style.left = novaPosicaoX;
-    botaoSim.style.top = novaPosicaoY;
+    botaoSim.style.left = novaPosicaoX + "px";
+    botaoSim.style.top = novaPosicaoY + "px";
+
+    if (numClicks === 15) {
+        mostrarAmor();
+    }
+}
+
+function mostrarAmor() {
+    alert("Se você insistiu, parabéns! A Hello Kitty te ama e acha você incrível! :)");
+    const helloKittyImage = document.getElementById("helloKittyImage");
+    helloKittyImage.style.display = "block"; // Mostra a imagem
+}
+
+function mostrarMensagem() {
+    alert("Que pena! Parece que você não está interessado(a) no amor da Hello Kitty :(");
 }
 </script>
 </body>
